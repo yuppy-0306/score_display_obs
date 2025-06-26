@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スコア表示</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container display-screen">
+        <p class="label">現在のスコア:</p>
+        <h1 id="displayScore">0</h1>
+        <p class="instruction">この画面をOBSに表示します</p>
+    </div>
+
+    <script>
+        // DOM要素の取得
+        const displayScoreElement = document.getElementById('displayScore');
+
+        // ローカルストレージからスコアを読み込み、表示
+        const savedScore = localStorage.getItem('currentScore');
+
+        // もしスコアが保存されていれば表示、なければデフォルト値
+        if (savedScore !== null) {
+            displayScoreElement.textContent = savedScore;
+        } else {
+            displayScoreElement.textContent = '0'; // デフォルトスコア
+        }
+
+        // ページを定期的に更新してスコアを最新に保つ（オプション）
+        // 例えば5秒ごとにローカルストレージをチェックする場合
+        setInterval(() => {
+            const updatedScore = localStorage.getItem('currentScore');
+            if (updatedScore !== null && displayScoreElement.textContent !== updatedScore) {
+                displayScoreElement.textContent = updatedScore;
+            }
+        }, 1000); // 1秒ごとにチェック
+    </script>
+</body>
+</html>

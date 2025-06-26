@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スコア入力</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container input-screen">
+        <h1>スコアを入力</h1>
+        <input type="number" id="scoreInput" placeholder="ここにスコアを入力" min="0">
+        <button id="saveScoreBtn">スコアを保存して表示</button>
+        <p class="instruction">この画面はOBSには表示しません</p>
+    </div>
+
+    <script>
+        // DOM要素の取得
+        const scoreInput = document.getElementById('scoreInput');
+        const saveScoreBtn = document.getElementById('saveScoreBtn');
+
+        // ボタンがクリックされた時の処理
+        saveScoreBtn.addEventListener('click', () => {
+            const score = scoreInput.value; // 入力された値を取得
+
+            // 入力値が数字であることを確認
+            if (score === '' || isNaN(score)) {
+                alert('有効なスコアを入力してください！');
+                return;
+            }
+
+            // スコアをローカルストレージに保存
+            // ローカルストレージはブラウザにデータを保存する仕組みです
+            localStorage.setItem('currentScore', score);
+
+            // スコア表示画面にリダイレクト
+            window.location.href = 'display.html';
+        });
+
+        // ページ読み込み時に、以前保存したスコアがあれば表示
+        const savedScore = localStorage.getItem('currentScore');
+        if (savedScore) {
+            scoreInput.value = savedScore;
+        }
+    </script>
+</body>
+</html>

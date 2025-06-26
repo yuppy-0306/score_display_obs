@@ -1,0 +1,93 @@
+/* 基本的なリセットとフォント設定 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: white; /* 全体の文字色 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 文字の視認性向上 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* ビューポートの高さ全体を使用 */
+    overflow: hidden; /* スクロールバー非表示 */
+}
+
+/* 背景を透明にする設定 - OBS表示用 */
+.display-screen {
+    background-color: transparent;
+}
+
+/* 入力画面の背景色（OBS表示しないので透過不要） */
+.input-screen {
+    background-color: #282c34; /* ダーク系の背景色 */
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box; /* パディングを幅に含める */
+}
+
+/* 入力フィールド */
+#scoreInput {
+    width: calc(100% - 20px); /* パディング分を考慮 */
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 2em; /* 入力文字サイズ */
+    text-align: center;
+    background-color: #3b3f49;
+    color: white;
+    outline: none;
+}
+
+#scoreInput::placeholder {
+    color: #bbb;
+}
+
+/* ボタン */
+#saveScoreBtn {
+    background-color: #61dafb; /* ボタンの色 */
+    color: #282c34;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#saveScoreBtn:hover {
+    background-color: #4dc2ea;
+}
+
+/* スコア表示画面のスタイル */
+.display-screen .label {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+#displayScore {
+    font-size: 8em; /* スコアの文字を非常に大きく */
+    font-weight: bold;
+    margin: 0;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* 半透明の背景 */
+    border-radius: 20px;
+    display: inline-block; /* 背景が文字の幅に合わせる */
+    min-width: 200px; /* 最小幅を設定 */
+}
+
+/* 説明テキスト */
+.instruction {
+    font-size: 0.9em;
+    color: #aaa;
+    margin-top: 30px;
+}
